@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "core.apps.CoreConfig",
     "core.user.apps.UserConfig",
     "core.auth.apps.AuthConfig",
+    "core.post.apps.PostConfig",
 ]
 
 REST_FRAMEWORK = {
@@ -53,6 +54,7 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_FILTER_BACKENDS':
     ['django_filters.rest_framework.DjangoFilterBackend'],
+    # 'PAGE_SIZE': 15,
 
 }
 

@@ -58,6 +58,17 @@ class User(AbstractModel,AbstractBaseUser, PermissionsMixin):
     # created = models.DateTimeField(auto_now=True)
     # updated = models.DateTimeField(auto_now_add=True)
 
+    posts_liked = models.ManyToManyField("core_post.Post",related_name='liked_by' )
+
+    def like(self, post):
+        return self.posts_liked.add(post)
+    
+    def remove_like(self, post):
+        return self.posts_liked.remove(post)
+    
+    def has_liked(self, post):
+        return self.posts_liked.filter(pk=post.pk).exists()
+
     USERNAME_FIELD ='email'
     REQUIRED_FIELDS = ['username']
 
