@@ -12,7 +12,7 @@ class UserManager(BaseUserManager, AbstractManager):
             instance = self.get(public_id=public_id)
             return instance
         except (ObjectDoesNotExist, ValueError, TypeError):
-            return Http404
+            raise Http404
 
             
     def create_user(self, username, email, password=None, **kwargs):

@@ -3,6 +3,7 @@ from core.user.viewsets import UserViewSet
 from core.auth.viewsets.login import LoginViewSet
 from core.auth.viewsets.register import RegisterViewSet
 from core.auth.viewsets.refresh import RefreshViewSet
+from core.post.viewsets import PostViewSet
 
 
 
@@ -17,6 +18,8 @@ router.register(r'auth/refresh', RefreshViewSet, basename='auth-refresh')
 # user
 router.register(r"user", UserViewSet, basename='user')
 
+# post
+router.register(r'post', PostViewSet, basename='post')
 
 app_name="core"
 
