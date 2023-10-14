@@ -8,6 +8,9 @@ from core.user.models import User
 
 class PostSerializer(AbstractSerializer):
     author = serializers.SlugRelatedField(queryset=User.objects.all(), slug_field='public_id')
+    liked = serializers.SerializerMethodField()
+    likes_count = serializers.SerializerMethodField()
+
 
     def to_representation(self, instance):
         rep = super().to_representation(instance)
@@ -29,8 +32,6 @@ class PostSerializer(AbstractSerializer):
 
         return instance
     
-    like = serializers.SerializerMethodField()
-    like_count = serializers.SerializerMethodField()
 
     def get_liked(self, instance):
         request = self.context.get('request', None)
